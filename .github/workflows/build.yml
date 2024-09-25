@@ -120,13 +120,13 @@ jobs:
         run: sudo apt update && sudo apt install swig
 
       - name: Download Natives (linux)
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: natives-linux
           path: build/dist-natives
 
       - name: Download Natives (windows)
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: natives-windows
           path: build/dist-natives
@@ -187,13 +187,13 @@ jobs:
         run: sudo apt update && sudo apt install swig
 
       - name: Download Natives (linux)
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: natives-linux
           path: build/dist-natives
 
       - name: Download Natives (windows)
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: natives-windows
           path: build/dist-natives
@@ -253,13 +253,13 @@ jobs:
         run: sudo apt update && sudo apt install swig
 
       - name: Download Natives (linux)
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: natives-linux
           path: build/dist-natives
 
       - name: Download Natives (windows)
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: natives-windows
           path: build/dist-natives
@@ -299,7 +299,7 @@ jobs:
     runs-on:  ubuntu-latest
     steps:
       - name: Download Maven Artifacts
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: dist-java
           path: maven
