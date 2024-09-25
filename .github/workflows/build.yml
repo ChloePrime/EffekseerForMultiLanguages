@@ -94,7 +94,7 @@ jobs:
           fi
 
       - name: Upload Natives
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: natives-${{ matrix.name }}
           path: build/dist-native
@@ -165,7 +165,7 @@ jobs:
           ./generate_maven_artifacts.sh
       
       - name: Upload Maven Artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: dist-java
           path: build/maven
@@ -232,7 +232,7 @@ jobs:
           cp -R src/csharp/swig build/dist-csharp/Effekseer/
       
       - name: Upload C# Library
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: dist-csharp
           path: build/dist-csharp
@@ -286,7 +286,7 @@ jobs:
           cp -R src/python/swig/* build/dist-python/
       
       - name: Upload Python Library
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: dist-python
           path: build/dist-python
@@ -349,7 +349,7 @@ jobs:
         shell: cmd
 
       - name: libGDX_Sample
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: libGdxSample-windows
           path: examples/libGdxSample
