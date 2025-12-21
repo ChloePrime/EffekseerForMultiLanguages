@@ -25,6 +25,7 @@ if(${JNI_FOUND})
     PRIVATE
     EffekseerCore
   )
+  target_compile_features(EffekseerNativeForJava PUBLIC cxx_std_17)
 endif()
 
 find_package(PythonLibs)
@@ -48,6 +49,8 @@ find_package(PythonLibs)
     ${PYTHON_LIBRARIES}
   )
 
+target_compile_features(EffekseerNativeForPython PUBLIC cxx_std_17)
+
 add_library(EffekseerNativeForCSharp
   SHARED
   csharp/dll.cpp
@@ -64,4 +67,6 @@ target_include_directories(
   Effekseer/Dev/Cpp/Effekseer/
   Effekseer/Dev/Cpp/EffekseerRendererGL/
 )
+
+target_compile_features(EffekseerNativeForCSharp PUBLIC cxx_std_17)
 

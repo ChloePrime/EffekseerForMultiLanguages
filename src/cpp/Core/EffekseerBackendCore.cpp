@@ -1,11 +1,14 @@
 #include "EffekseerBackendCore.h"
 #include <Effekseer.h>
+
 #include <EffekseerRendererGL.h>
 
 #ifdef _WIN32
 #include <EffekseerRendererDX11.h>
 #include <EffekseerRendererDX9.h>
 #endif
+
+#include <EffekseerRendererCommon/TextureLoader.h>
 
 #include <iostream>
 

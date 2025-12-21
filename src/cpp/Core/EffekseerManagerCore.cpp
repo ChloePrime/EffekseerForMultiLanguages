@@ -1,7 +1,7 @@
 #include "EffekseerManagerCore.h"
 #include "EffekseerBackendCore.h"
 #include "EffekseerEffectCore.h"
-#include "EffekseerRenderer/GraphicsDevice.h"
+#include "EffekseerRendererGL/EffekseerRendererGL.DeviceObject.h"
 #include <EffekseerRendererGL.h>
 
 inline void matrixFromValues(::Effekseer::Matrix44& matrix,
