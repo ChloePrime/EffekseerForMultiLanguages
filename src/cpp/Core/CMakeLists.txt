@@ -18,6 +18,7 @@ add_library(
 target_include_directories(
   EffekseerCore
   PUBLIC
+  ../Effekseer/Dev/Cpp/
   ../Effekseer/Dev/Cpp/Effekseer/
   ../Effekseer/Dev/Cpp/EffekseerRendererGL/
 )
