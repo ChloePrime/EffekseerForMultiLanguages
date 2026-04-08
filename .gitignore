@@ -7,3 +7,11 @@ src/cpp/csharp
 src/java/swig
 src/python/swig
 src/csharp/swig
+
+# Chloe's Extras
+*.cmake
+CMakeCache.txt
+CMakeFiles/
+*.vcxproj
+*.vcxproj.filters
+*.sln
