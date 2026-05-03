@@ -378,3 +378,23 @@ void EffekseerManagerCore::SetViewProjectionMatrixWithSimpleWindow(int32_t windo
 void EffekseerManagerCore::SetDynamicInput(int handle, int32_t index, float value) { manager_->SetDynamicInput(handle, index, value); }
 
 float EffekseerManagerCore::GetDynamicInput(int handle, int32_t index) { return manager_->GetDynamicInput(handle, index); }
+
+void EffekseerManagerCore::SetCollisionCallback(int64_t callback) const
+{
+	using Vector3D = Effekseer::Vector3D;
+	using JCallback = bool(*)(double startX, double startY, double startZ, double endX, double endY, double endZ, double* outputs);
+	auto jCallback = reinterpret_cast<JCallback>(callback);
+	
+	manager_->SetCollisionCallback([jCallback](const Vector3D& start, const Vector3D& end, Vector3D& outCollisionPosition, Vector3D& outCollisionNormal)
+	{
+		double output[6];
+		bool collided = jCallback(start.X, start.Y, start.Z, end.X, end.Y, end.Z, output);
+		outCollisionPosition.X = output[0];
+		outCollisionPosition.Y = output[1];
+		outCollisionPosition.Z = output[2];
+		outCollisionNormal.X = output[3];
+		outCollisionNormal.Y = output[4];
+		outCollisionNormal.Z = output[5];
+		return collided;
+	});
+}

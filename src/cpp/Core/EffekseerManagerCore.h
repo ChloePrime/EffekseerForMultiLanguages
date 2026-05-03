@@ -143,4 +143,6 @@ public:
 	int GetInstanceCount(int handle);
 
 	int GetTotalInstanceCount() const;
+	
+	void SetCollisionCallback(int64_t callback) const;
 };
