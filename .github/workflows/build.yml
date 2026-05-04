@@ -25,10 +25,14 @@ jobs:
             scriptExt: "bat"
             libExt: "dll"
             name: "windows"
-          - os: macos-latest
+          - os: macos-26
             scriptExt: "sh"
             libExt: "dylib"
             name: "macos"
+          - os: macos-26-intel
+            scriptExt: "sh"
+            libExt: "dylib"
+            name: "macos-intel"
     name: Build Natives - ${{ matrix.name }}
     runs-on:  ${{ matrix.os }}
     steps:
@@ -48,8 +52,8 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt update && sudo apt install libpulse-dev libglvnd-dev libx11-dev libopenal-dev libvulkan-dev libgl1-mesa-dev libgles2-mesa-dev libglu1-mesa-dev libgtk-3-dev ninja-build swig
 
-      - name: Install dependencies for macos-latest
-        if: matrix.os == 'macos-latest'
+      - name: Install dependencies for MacOS
+        if: matrix.name == 'macos' || matrix.name == 'macos-intel'
         run: |
           brew install swig
           cd src/cpp/Effekseer/
@@ -76,7 +80,7 @@ jobs:
 
           cd build
 
-          cmake -D BUILD_DX12=OFF -D BUILD_EXAMPLES=OFF ..
+          cmake -D BUILD_DX12=OFF -D BUILD_EXAMPLES=OFF -D CMAKE_TOOLCHAIN_FILE=ci-toolchain-${{ matrix.name }}.cmake ..
           cmake --build . --config Release
 
           dest="dist-native/${{ matrix.name }}/x86_64"
