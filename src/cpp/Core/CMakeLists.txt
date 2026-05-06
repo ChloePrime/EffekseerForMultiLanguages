@@ -52,7 +52,7 @@ if(NOT WIN32)
   target_link_libraries(
     EffekseerCore
     PUBLIC
-    OpenGL::OpenGL
+    ${OPENGL_LIBRARIES}
   )
 endif()
 
